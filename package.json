@@ -1,0 +1,28 @@
+{
+  "name": "init-jr-temp",
+  "version": "1.0.0",
+  "description": "金融事业部FE脚手架部署工具",
+  "main": "index.js",
+  "scripts": {
+    "test": "dev"
+  },
+  "bin": {
+    "jrfe": "bin/jrfe"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/F6-org/init-jr-temp.git"
+  },
+  "author": "yuqi6",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/F6-org/init-jr-temp/issues"
+  },
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "co": "^4.6.0",
+    "co-prompt": "^1.0.0",
+    "commander": "^2.9.0"
+  },
+  "homepage": "https://github.com/F6-org/init-jr-temp#readme"
+}
