@@ -13,6 +13,8 @@ module.exports = () => {
 		let pureTempUrl;
 
 		pureTempUrl = "http://git.sc.weibo.com/horizon/pureFrame.git";
+
+		if (projectName === '') {projectName = 'myJrProject'}
 		// git命令，远程拉取项目并自定义项目名
 		let cmdStr = `git clone ${pureTempUrl} ${projectName} && cd ${projectName}`;
 
@@ -33,7 +35,18 @@ module.exports = () => {
 			let fileUrl = `./${projectName}/routes/config.js`;
 			// fs.readFile(fileUrl, function (err, data) {
 			let setting =
-				`module.exports = {
+				`
+/* @description 路由配置文件
+ * @version 0.1
+ * @returns {Json} 路由配置对象
+ *  '/key': {
+ *      component_path: '', // comps文件夹下智能组件地址{String}
+ *      title:'',           // 页面标题{String}
+ *      state_path: ''      // states文件夹下action文件地址{String}，初始化数据函数默认为"initAllData"
+ *  }
+ */
+
+module.exports = {
 	routes: {
 		'/home': {
 			component: 'Home/Home',
@@ -57,24 +70,24 @@ module.exports = () => {
 
 		function* editGit() {
 			var gitUrl = yield prompt('git url（项目线上git地址）: ');
-			console.log(gitUrl, "0000000000000000")
 
 			if (gitUrl == '') {
 				let cmdStr = `cd ${projectName} && git init`;
-				execSync(cmdStr, (error, stdout, stderr) => {
+				exec(cmdStr, (error, stdout, stderr) => {
 					if (error) {
 						console.log(error);
 						process.exit();
 					}
-					console.log(chalk.red('\n √ ------------ 要记得手动配置项目git地址哦 -------------'));
+					console.log(chalk.red('\n √ ------------ 要记得手动配置项目git地址并提交哦 -------------'));
 					console.log(`\n cd ${projectName} && npm install \n`)
 					process.exit();
 				})
+				return;
 			}
 
 			let cmdStr = `cd ${projectName} && git init && git remote rm origin && git remote add origin ${gitUrl} && env GIT_SSL_NO_VERIFY=true git push origin master`;
 
-			console.log(chalk.white(`\n Start git push ${gitUrl}.........................`));
+			console.log(chalk.green(`\n ------------ Start git push ${gitUrl} -------------`));
 
 			exec(cmdStr, (error, stdout, stderr) => {
 				if (error) {
