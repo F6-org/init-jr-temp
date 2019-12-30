@@ -1,6 +1,6 @@
 {
   "name": "init-jr-temp",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "金融事业部FE脚手架部署工具",
   "main": "index.js",
   "scripts": {
