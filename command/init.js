@@ -12,7 +12,7 @@ module.exports = () => {
 		let projectName = yield prompt('Project name（项目名称）: ');
 		let pureTempUrl;
 
-		pureTempUrl = "http://git.sc.weibo.com/horizon/pureFrame.git";
+		pureTempUrl = "http://git.intra.weibo.com/horizon/pureFrame.git";
 
 		if (projectName === '') {projectName = 'myJrProject'}
 		// git命令，远程拉取项目并自定义项目名

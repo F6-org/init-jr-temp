@@ -21,6 +21,14 @@ program
     require('../command/init')()
   })
 
+program
+  .command('commit')
+  .description('commit files to the github')
+  .alias('c')
+  .action(() => {
+    require('../command/commit')()
+  })
+
 program.parse(process.argv)
 
 if(!program.args.length){
